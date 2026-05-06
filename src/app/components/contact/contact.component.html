@@ -1,0 +1,87 @@
+<section id="contact" class="min-h-screen flex flex-col justify-center pt-32 pb-24 px-8 max-w-7xl mx-auto mb-20">
+  <!-- Left-aligned Header -->
+  <div class="mb-16 text-left">
+    <h2 class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">CONNECT</h2>
+    <h3 class="text-4xl font-bold text-brand-gold italic">Get In Touch</h3>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <!-- Contact Details -->
+    <div class="space-y-10">
+      <p class="text-gray-400 text-xl leading-relaxed max-w-lg">
+        I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+      </p>
+      
+      <div class="space-y-8">
+        <div class="flex items-center gap-6 group">
+          <div class="p-4 bg-brand-gold/10 text-brand-gold rounded-2xl group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
+            <lucide-icon [name]="Mail" class="w-6 h-6"></lucide-icon>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Email</p>
+            <a [href]="'mailto:' + contactInfo.email" class="text-xl text-white hover:text-brand-gold transition-colors font-medium">{{ contactInfo.email }}</a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 group">
+          <div class="p-4 bg-brand-gold/10 text-brand-gold rounded-2xl group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
+            <lucide-icon [name]="Phone" class="w-6 h-6"></lucide-icon>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Phone</p>
+            <a [href]="'tel:' + contactInfo.phone" class="text-xl text-white hover:text-brand-gold transition-colors font-medium">{{ contactInfo.phone }}</a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 group">
+          <div class="p-4 bg-brand-gold/10 text-brand-gold rounded-2xl group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
+            <lucide-icon [name]="MapPin" class="w-6 h-6"></lucide-icon>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Location</p>
+            <p class="text-xl text-white font-medium">{{ contactInfo.location }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-4 pt-4">
+        <a *ngFor="let social of socials" [href]="social.link" [attr.aria-label]="social.label" 
+           class="p-4 bg-white/5 border border-white/10 rounded-2xl text-gray-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all">
+          <lucide-icon [name]="social.icon" class="w-6 h-6"></lucide-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="bg-brand-gray/20 border border-white/5 rounded-[40px] p-10 backdrop-blur-sm shadow-2xl">
+      <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-8">
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gray-500 mb-3">Name</label>
+          <input type="text" name="name" [(ngModel)]="formData.name" required
+                 class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-gold/50 transition-colors"
+                 placeholder="Your Name">
+        </div>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gray-500 mb-3">Email</label>
+          <input type="email" name="email" [(ngModel)]="formData.email" required
+                 class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-gold/50 transition-colors"
+                 placeholder="your@email.com">
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gray-500 mb-3">Message</label>
+          <textarea name="message" [(ngModel)]="formData.message" required rows="4"
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-gold/50 transition-colors"
+                    placeholder="Tell me about your project..."></textarea>
+        </div>
+
+        <button type="submit" [disabled]="!contactForm.form.valid"
+                class="w-full bg-brand-gold text-brand-dark font-bold py-5 rounded-2xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100">
+          <lucide-icon [name]="Send" class="w-5 h-5"></lucide-icon>
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

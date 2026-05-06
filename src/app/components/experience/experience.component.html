@@ -1,0 +1,47 @@
+<section id="experience" class="min-h-screen flex flex-col justify-center pt-32 pb-24 px-8 max-w-7xl mx-auto">
+  <!-- Left-aligned Header -->
+  <div class="mb-16 text-left">
+    <h2 class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">CAREER</h2>
+    <h3 class="text-4xl font-bold text-brand-gold italic">Work Experience</h3>
+  </div>
+
+  <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-0 md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-brand-gold/30 before:to-transparent">
+    
+    <div *ngFor="let exp of experiences; let i = index" class="relative flex items-center justify-between md:justify-normal group is-active mb-12">
+      
+      <!-- Icon -->
+      <div class="flex items-center justify-center w-12 h-12 rounded-full border border-brand-gold/50 bg-brand-dark text-brand-gold shadow shadow-brand-gold/20 shrink-0 z-10 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-dark">
+        <lucide-icon [name]="Briefcase" class="w-5 h-5"></lucide-icon>
+      </div>
+      
+      <!-- Card -->
+      <div class="ml-8 w-full md:max-w-2xl p-8 rounded-3xl bg-brand-gray/30 border border-white/5 backdrop-blur-sm transition-all duration-300 group-hover:border-brand-gold/30 group-hover:bg-brand-gray/50 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.05)]">
+        
+        <div class="flex flex-col gap-1 mb-6">
+          <h4 class="text-2xl font-bold text-white group-hover:text-brand-gold transition-colors">{{ exp.role }}</h4>
+          <span class="text-xl text-brand-gold/80 font-medium">{{ exp.company }}</span>
+          
+          <div class="flex flex-wrap gap-6 mt-3 text-sm text-gray-500">
+            <span class="flex items-center gap-2">
+              <lucide-icon [name]="Calendar" class="w-4 h-4"></lucide-icon>
+              {{ exp.period }}
+            </span>
+            <span class="flex items-center gap-2">
+              <lucide-icon [name]="MapPin" class="w-4 h-4"></lucide-icon>
+              {{ exp.location }}
+            </span>
+          </div>
+        </div>
+
+        <ul class="space-y-3 text-gray-400 text-base">
+          <li *ngFor="let achievement of exp.achievements" class="flex items-start gap-3">
+            <span class="text-brand-gold mt-1.5 shrink-0 text-xs">●</span>
+            <span class="leading-relaxed">{{ achievement }}</span>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    
+  </div>
+</section>

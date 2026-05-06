@@ -1,0 +1,28 @@
+<section id="education" class="min-h-screen flex flex-col justify-center pt-32 pb-24 px-8 max-w-7xl mx-auto">
+  <!-- Left-aligned Header -->
+  <div class="mb-16 text-left">
+    <h2 class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">ACADEMIC</h2>
+    <h3 class="text-4xl font-bold text-brand-gold italic">Education</h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div *ngFor="let edu of educationList" 
+         class="group flex flex-col justify-between p-8 rounded-3xl bg-brand-gray/20 border border-white/5 hover:border-brand-gold/30 transition-all duration-300">
+      
+      <div class="flex items-start gap-6">
+        <div class="p-4 bg-brand-gold/10 text-brand-gold rounded-2xl group-hover:bg-brand-gold group-hover:text-brand-dark transition-colors shrink-0">
+          <lucide-icon [name]="GraduationCap" class="w-8 h-8"></lucide-icon>
+        </div>
+        <div>
+          <h4 class="text-2xl font-bold text-white group-hover:text-brand-gold transition-colors mb-2">{{ edu.degree }}</h4>
+          <p class="text-gray-400 text-lg">{{ edu.school }}</p>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex items-center gap-2 text-brand-gold font-medium">
+        <lucide-icon [name]="Calendar" class="w-4 h-4"></lucide-icon>
+        {{ edu.year }}
+      </div>
+    </div>
+  </div>
+</section>
