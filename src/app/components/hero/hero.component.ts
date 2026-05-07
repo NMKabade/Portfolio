@@ -71,4 +71,8 @@ export class HeroComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  openPdf() {
+    window.open('/resume.pdf', '_blank');
+  }
 }
