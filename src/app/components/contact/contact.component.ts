@@ -26,9 +26,8 @@ export class ContactComponent {
   };
 
   socials = [
-    { icon: Github, link: '#', label: 'GitHub' },
-    { icon: Linkedin, link: '#', label: 'LinkedIn' },
-    { icon: Twitter, link: '#', label: 'Twitter' }
+    { icon: Github, link: 'https://github.com/NMKabade', label: 'GitHub' },
+    { icon: Linkedin, link: 'https://www.linkedin.com/in/niranjan-kabade', label: 'LinkedIn' }
   ];
 
   formData = {

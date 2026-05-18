@@ -45,7 +45,7 @@
       </div>
 
       <div class="flex gap-4 pt-4">
-        <a *ngFor="let social of socials" [href]="social.link" [attr.aria-label]="social.label" 
+        <a *ngFor="let social of socials" [href]="social.link" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label" 
            class="p-4 bg-white/5 border border-white/10 rounded-2xl text-gray-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all">
           <lucide-icon [name]="social.icon" class="w-6 h-6"></lucide-icon>
         </a>

@@ -2,11 +2,19 @@
   
   <app-navbar></app-navbar>
 
-  <!-- Subtle Background Particles/Glows mimicking the screenshot -->
-  <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
-  <div class="absolute top-[40%] right-[-10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+  <!-- Particle Background -->
+  <ngx-particles 
+    [id]="id" 
+    [options]="particlesOptions" 
+    (particlesLoaded)="particlesLoaded($event)"
+    class="absolute inset-0 z-0 pointer-events-none">
+  </ngx-particles>
 
-  <main class="flex-grow z-10">
+  <!-- Subtle Background Particles/Glows mimicking the screenshot -->
+  <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+  <div class="absolute top-[40%] right-[-10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+  <main class="flex-grow z-10 relative">
     <app-hero></app-hero>
     <app-about></app-about>
     <app-skills></app-skills>
@@ -16,7 +24,7 @@
     <app-contact></app-contact>
   </main>
 
-  <footer class="py-6 text-center text-sm text-gray-500 z-10">
+  <footer class="py-6 text-center text-sm text-gray-500 z-10 relative">
     &copy; {{ currentYear }} Niranjan Mahesh Kabade. All Rights Reserved.
   </footer>
 </div>
