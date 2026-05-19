@@ -16,21 +16,21 @@
   </div>
 
   <!-- Mobile Toggle -->
-  <div class="md:hidden flex items-center bg-brand-dark/60 backdrop-blur-lg border border-brand-gold/30 rounded-full px-6 py-3 pointer-events-auto shadow-xl">
+  <div [class]="'md:hidden flex items-center bg-brand-dark/60 backdrop-blur-lg border border-brand-gold/30 rounded-full px-6 py-3 shadow-xl transition-all duration-300 ' + (isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto')">
     <button (click)="toggleMenu()" class="text-brand-gold flex items-center gap-2 font-bold uppercase text-xs tracking-widest outline-none">
-      <lucide-icon [name]="isMenuOpen ? X : Menu" class="w-5 h-5"></lucide-icon>
+      <lucide-icon [name]="Menu" class="w-5 h-5"></lucide-icon>
       {{ activeSection }}
     </button>
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div [class]="'fixed inset-0 bg-brand-dark/95 backdrop-blur-2xl z-[-1] transition-all duration-500 flex flex-col items-center justify-center gap-8 ' + (isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')">
+  <div [class]="'fixed inset-0 bg-brand-dark z-[-1] transition-all duration-500 flex flex-col items-center justify-center gap-8 ' + (isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')">
     <button *ngFor="let link of navLinks" 
        (click)="scrollTo(link.target, link.id)"
        [class]="'text-3xl font-bold transition-all transform outline-none ' + (activeSection === link.id ? 'text-brand-gold scale-110' : 'text-gray-500 hover:text-white')">
       {{ link.name }}
     </button>
-    <button (click)="toggleMenu()" class="mt-12 p-4 bg-brand-gold/10 rounded-full text-brand-gold border border-brand-gold/20 outline-none">
+    <button (click)="toggleMenu()" class="mt-12 p-4 bg-brand-gold/10 rounded-full text-brand-gold border border-brand-gold/20 outline-none hover:bg-brand-gold/20 transition-colors">
       <lucide-icon [name]="X" class="w-8 h-8"></lucide-icon>
     </button>
   </div>
