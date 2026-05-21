@@ -61,12 +61,11 @@ export class HeroComponent implements OnInit, OnDestroy {
   scrollTo(target: string, id: string) {
     const element = document.querySelector(target);
     if (element) {
-      const offset = 180;
+      // Scroll exactly to the top of the element to match navbar behavior
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition,
         behavior: 'smooth'
       });
     }
