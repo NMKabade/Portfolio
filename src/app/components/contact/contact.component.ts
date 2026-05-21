@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-angular';
+import { LucideAngularModule, Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, CheckCircle2, XCircle } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -18,6 +19,10 @@ export class ContactComponent {
   readonly Github = Github;
   readonly Linkedin = Linkedin;
   readonly Twitter = Twitter;
+  readonly CheckCircle2 = CheckCircle2;
+  readonly XCircle = XCircle;
+
+  private http = inject(HttpClient);
 
   contactInfo = {
     email: 'kabadeniranjan27@gmail.com',
@@ -36,9 +41,35 @@ export class ContactComponent {
     message: ''
   };
 
+  isSubmitting = false;
+  submitSuccess = false;
+  submitError = false;
+
   onSubmit() {
-    console.log('Form submitted:', this.formData);
-    alert('Thank you for your message! This is a demo form.');
-    this.formData = { name: '', email: '', message: '' };
+    this.isSubmitting = true;
+    this.submitSuccess = false;
+    this.submitError = false;
+
+    this.http.post('http://localhost:8000/api/contact/', this.formData).subscribe({
+      next: () => {
+        this.isSubmitting = false;
+        this.submitSuccess = true;
+        this.formData = { name: '', email: '', message: '' };
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          this.submitSuccess = false;
+        }, 5000);
+      },
+      error: (error) => {
+        console.error('Error submitting form:', error);
+        this.isSubmitting = false;
+        this.submitError = true;
+        
+        setTimeout(() => {
+          this.submitError = false;
+        }, 5000);
+      }
+    });
   }
 }

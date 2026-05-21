@@ -76,12 +76,38 @@
                     placeholder="Tell me about your project..."></textarea>
         </div>
 
-        <button type="submit" [disabled]="!contactForm.form.valid"
-                class="w-full bg-brand-gold text-brand-dark font-bold py-5 rounded-2xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100">
-          <lucide-icon [name]="Send" class="w-5 h-5"></lucide-icon>
-          Send Message
+        <button type="submit" [disabled]="!contactForm.form.valid || isSubmitting"
+                class="w-full bg-brand-gold text-brand-dark font-bold py-5 rounded-2xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
+          <lucide-icon [name]="Send" class="w-5 h-5" *ngIf="!isSubmitting"></lucide-icon>
+          <div *ngIf="isSubmitting" class="w-5 h-5 border-2 border-brand-dark border-t-transparent rounded-full animate-spin"></div>
+          {{ isSubmitting ? 'Sending...' : 'Send Message' }}
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="fixed top-28 right-8 z-[100] flex flex-col gap-4 pointer-events-none">
+    <!-- Success Toast -->
+    <div [class]="'flex items-center gap-4 px-6 py-4 rounded-2xl bg-brand-dark/95 border border-brand-gold/30 shadow-[0_15px_40px_rgba(212,175,55,0.15)] backdrop-blur-xl transform transition-all duration-500 ' + (submitSuccess ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-12 opacity-0')">
+      <div class="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
+        <lucide-icon [name]="CheckCircle2" class="w-6 h-6"></lucide-icon>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm mb-0.5">Message Sent</h4>
+        <p class="text-gray-400 text-xs">I'll get back to you shortly.</p>
+      </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div [class]="'flex items-center gap-4 px-6 py-4 rounded-2xl bg-brand-dark/95 border border-red-500/30 shadow-[0_15px_40px_rgba(239,68,68,0.15)] backdrop-blur-xl transform transition-all duration-500 ' + (submitError ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-12 opacity-0')">
+      <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 shrink-0">
+        <lucide-icon [name]="XCircle" class="w-6 h-6"></lucide-icon>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm mb-0.5">Sending Failed</h4>
+        <p class="text-gray-400 text-xs">Please try again later.</p>
+      </div>
     </div>
   </div>
 </section>
