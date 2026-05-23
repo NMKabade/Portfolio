@@ -1,27 +1,80 @@
-# Portfolio
+# 🌟 Niranjan Mahesh Kabade - Personal Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+A sleek, premium, modern single-page developer portfolio designed to showcase software engineering expertise, SaaS architectures, and full-stack capabilities. 
 
-## Development server
+Built with **Angular 18**, **Tailwind CSS**, and **ngx-particles** on the frontend, combined with a **Django REST Framework** backend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 📸 Portfolio Screenshots
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 🖥️ Hero Section
+An elegant, dark-themed hero landing with a dynamic typing effect, floating gold particles, and custom interactive canvas nodes.
+![Portfolio Hero Section](screenshots/hero.png)
 
-## Build
+### 🚀 Featured Projects
+A glassmorphic, responsive grid showcasing full-stack projects complete with technology tags, descriptive pipelines, and repository links.
+![Portfolio Projects Showcase](screenshots/projects.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## ✨ Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Premium Modern Design**: Tailored HSL color palette featuring deep slate (`#0B0F19`) and warm gold accents (`#d4af37`).
+- **Dynamic Particle Effects**: Real-time canvas interactive particle system responding to user clicks and mouse hover.
+- **Micro-Animations & Smooth Scrolling**: Optimized navigation with fluid scrolling transitions between sections.
+- **Responsive Architecture**: Fully optimized layout for mobile, tablet, and ultra-wide desktop monitors.
+- **Robust Component Library**: Reusable UI blocks including:
+  - **Hero** with auto-typing status lines
+  - **About Me** intro card
+  - **Interactive Skills Grid**
+  - **Experience & Education Timeline**
+  - **Projects Gallery** with glassmorphic cards
+  - **Contact Form** with API verification
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🛠️ Tech Stack
 
-## Further help
+### Frontend
+- **Framework**: Angular 18 (Standalone Components)
+- **Styling**: Tailwind CSS & SCSS
+- **Icons**: Lucide Angular
+- **Effects**: tsparticles (Engine & Slim)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Backend
+- **Framework**: Django & Django REST Framework
+- **Database**: SQLite3 / PostgreSQL
+- **Task Queue**: Celery & Redis (for background jobs)
+- **Authentication**: JWT-based Auth
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v18.x or later)
+- Python 3.10+
+- Angular CLI
+
+### 1. Frontend Setup
+```bash
+cd portfolio_frontend
+npm install
+npm start
+```
+Frontend will be available at `http://localhost:4200/`.
+
+### 2. Backend Setup
+```bash
+cd portfolio_backend
+# Activate virtual environment
+venv\Scripts\activate   # Windows
+source venv/bin/activate # Unix/macOS
+
+# Install dependencies & run migrations
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+Backend API will be available at `http://127.0.0.1:8000/`.
