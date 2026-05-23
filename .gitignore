@@ -1,15 +1,21 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Compiled frontend output and cache
+portfolio_frontend/dist/
+portfolio_frontend/tmp/
+portfolio_frontend/out-tsc/
+portfolio_frontend/bazel-out/
+portfolio_frontend/.angular/
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# Frontend dependencies
+portfolio_frontend/node_modules/
+portfolio_frontend/npm-debug.log
+portfolio_frontend/yarn-error.log
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Backend dependencies and virtual environment
+portfolio_backend/venv/
+portfolio_backend/.venv/
+portfolio_backend/__pycache__/
+portfolio_backend/*/__pycache__/
+portfolio_backend/db.sqlite3
 
 # IDEs and editors
 .idea/
@@ -27,15 +33,6 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
-
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
 
 # System files
 .DS_Store
