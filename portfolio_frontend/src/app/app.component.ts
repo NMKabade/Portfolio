@@ -6,6 +6,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
+import { CertificatesComponent } from './components/certificates/certificates.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
@@ -23,6 +24,7 @@ import { Container, Engine, MoveDirection, OutMode } from '@tsparticles/engine';
     ExperienceComponent,
     ProjectsComponent,
     EducationComponent,
+    CertificatesComponent,
     ContactComponent,
     NavbarComponent,
     NgxParticlesModule

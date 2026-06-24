@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     { id: 'experience', name: 'Experience', target: '#experience' },
     { id: 'projects', name: 'Projects', target: '#projects' },
     { id: 'education', name: 'Achievements', target: '#education' },
+    { id: 'certificates', name: 'Certificates', target: '#certificates' },
     { id: 'contact', name: 'Contact', target: '#contact' }
   ];
 
