@@ -1,37 +1,66 @@
 <nav class="fixed top-8 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
   <!-- Desktop Pill Navbar -->
-  <div class="hidden md:flex items-center bg-brand-dark/40 backdrop-blur-xl border border-brand-gold/20 rounded-full px-10 py-4 pointer-events-auto shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
+  <div
+    class="hidden md:flex items-center bg-brand-dark/40 backdrop-blur-xl border border-brand-gold/20 rounded-full px-10 py-4 pointer-events-auto shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
     <div class="flex items-center gap-8 lg:gap-12">
       <div *ngFor="let link of navLinks" class="relative flex flex-col items-center group">
-        
+
         <!-- Hover/Active Underline Effect -->
-        <div [class]="'absolute -bottom-2 left-0 w-full h-[3px] bg-brand-gold shadow-[0_0_10px_#d4af37] transition-all duration-300 pointer-events-none ' + (activeSection === link.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100')"></div>
-        
+        <div
+          [class]="'absolute -bottom-2 left-0 w-full h-[3px] bg-brand-gold shadow-[0_0_10px_#d4af37] transition-all duration-300 pointer-events-none ' + (activeSection === link.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100')">
+        </div>
+
         <button (click)="scrollTo(link.target, link.id)"
-           [class]="'relative text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer outline-none ' + (activeSection === link.id ? 'text-brand-gold' : 'text-gray-300 group-hover:text-white')">
+          [class]="'relative text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer outline-none ' + (activeSection === link.id ? 'text-brand-gold' : 'text-gray-300 group-hover:text-white')">
           {{ link.name }}
         </button>
       </div>
     </div>
   </div>
+</nav>
 
-  <!-- Mobile Toggle -->
-  <div [class]="'md:hidden flex items-center bg-brand-dark/60 backdrop-blur-lg border border-brand-gold/30 rounded-full px-6 py-3 shadow-xl transition-all duration-300 ' + (isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto')">
-    <button (click)="toggleMenu()" class="text-brand-gold flex items-center gap-2 font-bold uppercase text-xs tracking-widest outline-none">
-      <lucide-icon [name]="Menu" class="w-5 h-5"></lucide-icon>
-      {{ activeSection }}
+<!-- Mobile Header Bar -->
+<div
+  class="md:hidden fixed top-0 left-0 w-full px-5 py-4 flex justify-between items-center pointer-events-auto z-50 transition-all duration-300"
+  [class.bg-brand-dark]="isScrolled" [class.shadow-md]="isScrolled" [class.backdrop-blur-md]="isScrolled">
+  <!-- Logo -->
+  <img src="NMK.jpg" alt="Logo" class="h-10 w-auto object-contain drop-shadow-md">
+
+  <button (click)="toggleMenu()"
+    class="text-brand-gold p-3 bg-brand-dark/80 backdrop-blur-md border border-brand-gold/30 rounded-full shadow-lg outline-none hover:bg-brand-gold/20 transition-colors">
+    <lucide-icon [name]="Menu" class="w-5 h-5"></lucide-icon>
+  </button>
+</div>
+
+<!-- Mobile Sidebar Backdrop -->
+<div (click)="toggleMenu()"
+  [class]="'md:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[51] transition-opacity duration-300 pointer-events-auto ' + (isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')">
+</div>
+
+<!-- Mobile Sidebar Drawer -->
+<div
+  [class]="'md:hidden fixed top-0 right-0 h-full w-[80%] max-w-sm bg-brand-dark border-l border-brand-gold/20 z-[52] shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col pointer-events-auto ' + (isMenuOpen ? 'translate-x-0' : 'translate-x-full')">
+
+  <div class="flex justify-between items-center p-6 border-b border-white/5">
+    <img src="NMK.jpg" alt="Logo" class="h-8 w-auto object-contain drop-shadow-md">
+    <button (click)="toggleMenu()"
+      class="text-gray-400 hover:text-brand-gold p-2 bg-white/5 rounded-full outline-none transition-colors">
+      <lucide-icon [name]="X" class="w-5 h-5"></lucide-icon>
     </button>
   </div>
 
-  <!-- Mobile Menu Overlay -->
-  <div [class]="'fixed inset-0 bg-brand-dark z-[-1] transition-all duration-500 flex flex-col items-center justify-center gap-8 ' + (isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')">
-    <button *ngFor="let link of navLinks" 
-       (click)="scrollTo(link.target, link.id)"
-       [class]="'text-3xl font-bold transition-all transform outline-none ' + (activeSection === link.id ? 'text-brand-gold scale-110' : 'text-gray-500 hover:text-white')">
+  <div class="flex flex-col py-2 flex-grow justify-center">
+    <button *ngFor="let link of navLinks" (click)="scrollTo(link.target, link.id)"
+      [class]="'text-left px-8 py-2.5 text-base font-medium transition-all outline-none border-l-4 ' + (activeSection === link.id ? 'text-brand-gold border-brand-gold bg-gradient-to-r from-brand-gold/10 to-transparent' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5')">
       {{ link.name }}
     </button>
-    <button (click)="toggleMenu()" class="mt-12 p-4 bg-brand-gold/10 rounded-full text-brand-gold border border-brand-gold/20 outline-none hover:bg-brand-gold/20 transition-colors">
-      <lucide-icon [name]="X" class="w-8 h-8"></lucide-icon>
+  </div>
+
+  <div class="mt-auto p-8 mb-4 border-t border-white/5">
+    <div class="text-center text-xs text-gray-500 mb-4 tracking-widest uppercase">Get In Touch</div>
+    <button (click)="scrollTo('#contact', 'contact')"
+      class="w-full py-3.5 bg-brand-gold text-brand-dark font-bold rounded-full outline-none shadow-[0_0_15px_rgba(212,175,55,0.3)] active:scale-95 transition-transform">
+      Let's Connect
     </button>
   </div>
-</nav>
+</div>
