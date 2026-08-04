@@ -57,23 +57,42 @@
       <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-8">
         <div>
           <label class="block text-xs uppercase tracking-widest text-gray-500 mb-3">Name</label>
-          <input type="text" name="name" [(ngModel)]="formData.name" required
+          <input type="text" name="name" [(ngModel)]="formData.name" #nameInput="ngModel" required
                  class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-gold/50 transition-colors"
+                 [class.border-red-500]="nameInput.invalid && (nameInput.dirty || nameInput.touched)"
                  placeholder="Your Name">
+          <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" class="text-red-400 text-xs mt-2">
+            Name is required.
+          </div>
         </div>
         
         <div>
           <label class="block text-xs uppercase tracking-widest text-gray-500 mb-3">Email</label>
-          <input type="email" name="email" [(ngModel)]="formData.email" required
+          <input type="email" name="email" [(ngModel)]="formData.email" #emailInput="ngModel" required email
                  class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-gold/50 transition-colors"
-                 placeholder="your@email.com">
+                 [class.border-red-500]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+                 placeholder="your&#64;email.com">
+          <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-red-400 text-xs mt-2 space-y-1">
+            <p *ngIf="emailInput.errors?.['required']">Email is required.</p>
+            <p *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</p>
+          </div>
         </div>
 
         <div>
-          <label class="block text-xs uppercase tracking-widest text-gray-500 mb-3">Message</label>
-          <textarea name="message" [(ngModel)]="formData.message" required rows="4"
+          <div class="flex justify-between items-center mb-3">
+            <label class="block text-xs uppercase tracking-widest text-gray-500">Message</label>
+            <span class="text-xs" [class.text-brand-gold]="formData.message.length >= 40" [class.text-gray-500]="formData.message.length < 40">
+              {{ formData.message.length }}/40 min chars
+            </span>
+          </div>
+          <textarea name="message" [(ngModel)]="formData.message" #messageInput="ngModel" required minlength="40" rows="4"
                     class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-gold/50 transition-colors"
-                    placeholder="Tell me about your project..."></textarea>
+                    [class.border-red-500]="messageInput.invalid && (messageInput.dirty || messageInput.touched)"
+                    placeholder="Tell me about your project (minimum 40 characters)..."></textarea>
+          <div *ngIf="messageInput.invalid && (messageInput.dirty || messageInput.touched)" class="text-red-400 text-xs mt-2 space-y-1">
+            <p *ngIf="messageInput.errors?.['required']">Message is required.</p>
+            <p *ngIf="messageInput.errors?.['minlength']">Message must be at least 40 characters long (currently {{ formData.message.length }}/40).</p>
+          </div>
         </div>
 
         <button type="submit" [disabled]="!contactForm.form.valid || isSubmitting"

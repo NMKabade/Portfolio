@@ -34,12 +34,12 @@
 
 <!-- Mobile Sidebar Backdrop -->
 <div (click)="toggleMenu()"
-  [class]="'md:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[51] transition-opacity duration-300 pointer-events-auto ' + (isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')">
+  [class]="'md:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[51] transition-opacity duration-300 ' + (isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')">
 </div>
 
 <!-- Mobile Sidebar Drawer -->
 <div
-  [class]="'md:hidden fixed top-0 right-0 h-full w-[80%] max-w-sm bg-brand-dark border-l border-brand-gold/20 z-[52] shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col pointer-events-auto ' + (isMenuOpen ? 'translate-x-0' : 'translate-x-full')">
+  [class]="'md:hidden fixed top-0 right-0 h-full w-[80%] max-w-sm bg-brand-dark border-l border-brand-gold/20 z-[52] shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col ' + (isMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none')">
 
   <div class="flex justify-between items-center p-6 border-b border-white/5">
     <img src="NMK.jpg" alt="Logo" class="h-8 w-auto object-contain drop-shadow-md">

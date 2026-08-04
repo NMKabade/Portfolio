@@ -46,6 +46,10 @@ export class ContactComponent {
   submitError = false;
 
   onSubmit() {
+    if (!this.formData.name || !this.formData.email || !this.formData.message || this.formData.message.length < 40) {
+      return;
+    }
+
     this.isSubmitting = true;
     this.submitSuccess = false;
     this.submitError = false;
